@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Button} from 'shared';
-import {ApproveBtnProps} from '../../types';
+import {ApproveBtnProps} from '../../shared/types';
 
 import cn from './ApproveBtn.module.scss';
 
