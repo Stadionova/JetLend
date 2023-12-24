@@ -1,29 +1,36 @@
 import React, {useEffect, useState} from 'react';
 
-import {ButtonType} from 'shared/types';
-import {ModalWrapper, NextBtn} from 'shared';
+import {ButtonType, PageStates} from 'shared/types';
+import {ModalWrapper, ApproveBtn} from 'shared';
 
 export const Main = () => {
-    const [isModalOpen, setModalOpen] = useState<boolean>(false);
-    const [isDataApproved, setDataApproved] = useState<boolean>(false);
     const alertText = '«Действие выполнено»'
 
+    const [pageState, setPageState] = useState<PageStates>(PageStates.MAIN);
+    const [isRulesApproved, setRulesApproved] = useState<boolean>(false);
+
+    const onMainBtnClick = () => {
+        return !isRulesApproved
+            ? setPageState(PageStates.MODAL)
+            : alert(alertText)
+    }
+
     useEffect(() => {
-        isDataApproved && alert(alertText);
-    }, [isDataApproved]);
+        isRulesApproved && alert(alertText);
+    }, [isRulesApproved]);
 
     return (
         <>
-            {!isModalOpen && (
-                <NextBtn
+            {pageState === PageStates.MAIN && (
+                <ApproveBtn
                     btnType={ButtonType.PRIMARY_ACTIVE_ON}
-                    btnCallBack={!isDataApproved
-                        ? () => setModalOpen(true)
-                        : () => alert(alertText)}
+                    btnCallBack={onMainBtnClick}
+                    btnText='Выполнить действие'
                 />
             )}
-            {isModalOpen && !isDataApproved && (
-                <ModalWrapper onAgreeBtn={() => setDataApproved(true)} closeModal={setModalOpen}/>
+            {pageState === PageStates.MODAL && !isRulesApproved && (
+                <ModalWrapper onAgreeBtn={() => setRulesApproved(true)}
+                              closeModal={() => setPageState(PageStates.MAIN)}/>
             )}
         </>
     );

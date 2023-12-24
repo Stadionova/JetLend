@@ -10,7 +10,7 @@ export const Modal = ({text, children, title, closeModal}: ModalProps) => {
     return (
         <div className={cn.modal}>
             <TextBlock styles={cn.content}>
-                <div className={cn.closeIcon} onClick={() => closeModal(false)}>
+                <div className={cn.closeIcon} onClick={closeModal}>
                     <CloseArrow/>
                 </div>
                 <Text text={title} style={cn.title}/>

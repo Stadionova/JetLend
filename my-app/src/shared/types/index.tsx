@@ -4,7 +4,7 @@ export interface ModalProps {
     children: React.ReactNode;
     text: string;
     title: string;
-    closeModal: (value: boolean) => void;
+    closeModal: (e: any) => void;
 }
 
 export enum ButtonType {
@@ -13,12 +13,17 @@ export enum ButtonType {
     PRIMARY_ACTIVE_OFF_NEW,
 }
 
+export enum PageStates {
+    MAIN = 'MAIN',
+    MODAL = 'MODAL'
+}
+
 export interface ModalWrapperProps {
-    closeModal: (isModalOpen: boolean) => void;
+    closeModal: (isModalOpen: PageStates) => void;
     onAgreeBtn: (value: boolean) => void;
 }
 
-export interface SharedButtonProps {
+export interface ButtonProps {
     onBtnClick: (e: any) => void;
     type: ButtonType;
     btnText: string;
@@ -33,8 +38,9 @@ export interface TextBlockProps {
     id?: string;
 }
 
-export interface NextBtnProps {
+export interface ApproveBtnProps {
     btnCallBack: () => void;
     btnType: ButtonType;
     disabled?: boolean;
+    btnText: string
 }

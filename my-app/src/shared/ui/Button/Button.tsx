@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ButtonType, SharedButtonProps} from 'shared/types';
+import {ButtonType, ButtonProps} from 'shared/types';
 
 import classnames from 'classnames';
 import cn from './Button.module.scss';
@@ -11,7 +11,7 @@ export const buttonTypeCn = {
     [ButtonType.EMPTY_WITHOUT_BORDER]: cn.emptyWithoutBorder,
 };
 
-export const Button = ({onBtnClick, type, btnText, id, disabled}: SharedButtonProps) => {
+export const Button = ({onBtnClick, type, btnText, id, disabled}: ButtonProps) => {
     return (
         <button
             disabled={disabled}

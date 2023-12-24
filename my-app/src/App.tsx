@@ -1,14 +1,9 @@
-import {FC} from 'react';
-import {ConfigProvider} from 'antd';
-
 import {Main} from "./pages/Main/Main";
 
-const App: FC = (): JSX.Element => {
+const App = () => {
     return (
         <div className="App">
-            <ConfigProvider>
-                <Main/>
-            </ConfigProvider>
+            <Main/>
         </div>
     );
 };
