@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import 'moment/locale/ru';
 
 import {ButtonType, ModalWrapperProps, PageStates} from '../../types';
 import {Modal} from './Modal';
@@ -11,6 +10,11 @@ export const ModalWrapper = ({closeModal, onAgreeBtn}: ModalWrapperProps) => {
     const [btnType, setBtnType] = useState(ButtonType.PRIMARY_ACTIVE_OFF_NEW);
     const [seconds, setSeconds] = useState(5);
     const [timerActive, setTimerActive] = useState(false);
+
+    const onApproveBtnClick = () => {
+        closeModal(PageStates.MAIN);
+        onAgreeBtn(true);
+    }
 
     useEffect(() => {
         seconds === 0 && setBtnType(ButtonType.PRIMARY_ACTIVE_ON);
@@ -44,10 +48,7 @@ export const ModalWrapper = ({closeModal, onAgreeBtn}: ModalWrapperProps) => {
                     <Button
                         disabled={btnType === ButtonType.PRIMARY_ACTIVE_OFF_NEW}
                         id="agree"
-                        onBtnClick={() => {
-                            closeModal(PageStates.MAIN);
-                            onAgreeBtn(true);
-                        }}
+                        onBtnClick={onApproveBtnClick}
                         type={btnType}
                         btnText={seconds === 0 ? 'Подтвердить' : `Подтвердить ${seconds}`}
                     />

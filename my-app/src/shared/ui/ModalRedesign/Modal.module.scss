@@ -1,76 +1,47 @@
-@mixin fonts($weight,$size,$lineHeight,$color) {
+@mixin defaultStyles($weight,$size,$lineHeight,$color) {
   font-weight: $weight;
   font-size: $size;
   line-height: $lineHeight;
   color: $color;
   align-items: center;
   display: flex;
+  font-family: Montserrat, serif;
 }
 
 .modal {
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  text-align: center !important;
+  text-align: center;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 2000;
-  height: 100%;
   background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(1000px);
 }
 
 .modalBtns {
   display: flex;
   width: 50%;
   font-family: Montserrat, sans-serif;
-  font-style: normal;
-}
-
-@media (max-width: 280px) {
-  .modalBtns button {
-    font-size: 15px;
-  }
 }
 
 .modalWrapper {
   font-family: Montserrat, sans-serif;
-  font-style: normal;
-}
-
-.firstBlockAlternative {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 32px 16px;
-  border-radius: 16px;
-  font-feature-settings: normal;
-  font-variant: normal;
-  margin-top: 16px;
-  background: #FFF;
-  box-shadow: 0 2px 6px 0 rgba(19, 19, 20, 0.12);
-
-  svg {
-    align-self: center
-  }
 }
 
 .content {
-  @extend .firstBlockAlternative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 16px 16px 16px;
+  border-radius: 16px;
+  background: #FFF;
+  box-shadow: 0 2px 6px 0 rgba(19, 19, 20, 0.12);
   position: fixed;
   top: 0;
   bottom: 0;
-  margin: auto;
   height: fit-content;
   left: 0;
   right: 0;
-  z-index: 9999;
-  padding-bottom: 16px;
-  margin-left: 16px;
-  margin-right: 16px;
+  margin: auto 16px auto 16px;
 }
 
 .closeIcon {
@@ -80,38 +51,13 @@
 }
 
 .desc {
+  @include defaultStyles(400, 14px, 18px, #78797A);
   margin-bottom: 25px;
   margin-top: 16px;
-  color: var(--48-blue, #78797A);
-  text-align: center;
-  font-family: Montserrat, serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px;
-}
-
-.alternativeTitle {
-  @include fonts(600, 17px, 22px, #070707);
-  text-align: center;
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
-  margin-left: auto;
-  margin-right: auto;
-  white-space: pre-wrap;
-  color: #070707;
-  font-family: Montserrat, serif;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 22px;
 }
 
 .title {
-  @extend .alternativeTitle;
-  @include fonts(600, 17px, 22px, #070707);
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
+  @include defaultStyles(600, 17px, 22px, #070707);
+  margin-left: auto;
+  margin-right: auto;
 }

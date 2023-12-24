@@ -1,5 +1,4 @@
 import React from 'react';
-import 'moment/locale/ru';
 
 import {ModalProps} from '../../types';
 import {TextBlock, Text, CloseArrow} from 'shared';

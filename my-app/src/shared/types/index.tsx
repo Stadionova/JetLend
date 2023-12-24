@@ -7,6 +7,11 @@ export interface ModalProps {
     closeModal: (e: any) => void;
 }
 
+export interface TextProps {
+    text?: string,
+    style: string
+}
+
 export enum ButtonType {
     PRIMARY_ACTIVE_ON,
     EMPTY_WITHOUT_BORDER,
